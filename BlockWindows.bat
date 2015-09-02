@@ -1,14 +1,21 @@
 @echo off
+
+REM --- -----------------------------------------------
+REM add "REM" in front of any line in this script you want to use...
+REM --- -----------------------------------------------
+
 openfiles.exe 1>nul 2>&1
 if not %errorlevel% equ 0 (
-    Echo You are not administrator! Right Click file select run as admin
+    echo You are not administrator! Right Click the file instead and select »run as admin«
     pause
     EXIT 1
 ) else (   
 
 SETLOCAL
 
+REM --- -----------------------------------------------
 REM --- uninstall updates
+REM --- -----------------------------------------------
 echo uninstalling updates ...
 echo Delete KB971033 (license validation)
 start "title" /b /wait wusa.exe /kb:971033 /uninstall /quiet /norestart
@@ -19,55 +26,55 @@ echo  - next
 echo Delete KB2952664 (Get Windows 10 assistant)
 start "title" /b /wait wusa.exe /kb:2952664 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB2976978 (update for windows 8.1 and windows 8)
+echo Delete KB2976978 (Update for Win8.1 and Win8)
 start "title" /b /wait wusa.exe /kb:2976978 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB29777598 (update for windows 7 rtm)
+echo Delete KB29777598 (Update for Windows 7 rtm)
 start "title" /b /wait wusa.exe /kb:29777598 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB2990214 (Get Windows 10 for Win7)
+echo Delete KB2990214 (Get Windows 10 for Windows 7)
 start "title" /b /wait wusa.exe /kb:2990214 /uninstall /quiet /norestart
 echo  - next
 echo Delete KB3012973 (Upgrade to Windows 10 Pro)
 start "title" /b /wait wusa.exe /kb:3012973 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3014460 (Upgrade for windows insider preview / upgrade to windows 10)
+echo Delete KB3014460 (Upgrade for Windows insider preview / upgrade to Windows 10)
 start "title" /b /wait wusa.exe /kb:3014460 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3015249 (Upgrade that adds telemetry points to consent.exe in Windows 8.1 and Windows 7)
+echo Delete KB3015249 (Upgrade that adds telemetry points to consent.exe in Win8.1 and Windows 7)
 start "title" /b /wait wusa.exe /kb:3015249 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3021917 (update to Windows 7 SP1 for performance improvements)
+echo Delete KB3021917 (Update for Windows 7 SP1 for performance improvements)
 start "title" /b /wait wusa.exe /kb:3021917 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3022345 (telemetry)
+echo Delete KB3022345 (Telemetry)
 start "title" /b /wait wusa.exe /kb:3022345 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3035583 (GWX Update installs Get Windows 10 app in Windows 8.1 and Windows 7 SP1)
+echo Delete KB3035583 (GWX Update installs Get Windows 10 app in Win8.1 and Windows 7 SP1)
 start "title" /b /wait wusa.exe /kb:3035583 /uninstall /quiet /norestart
 echo  - next
 echo Delete KB3044374 (Get Windows 10 for Win8.1)
 start "title" /b /wait wusa.exe /kb:3044374 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3050265 (update for Windows Update on Win7)
+echo Delete KB3050265 (Update for Windows Update on Windows 7)
 start "title" /b /wait wusa.exe /kb:3050265 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3050267 (update for windows update client for windows 8.1 june 2015)
+echo Delete KB3050267 (Update for Windows update client for Win8.1 june 2015)
 start "title" /b /wait wusa.exe /kb:3050267 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3065987 (update for Windows Update on Win7/Server 2008R2)
+echo Delete KB3065987 (Update for Windows Update on Windows 7/Server 2008R2)
 start "title" /b /wait wusa.exe /kb:3065987 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3068708 (telemetry)
+echo Delete KB3068708 (Telemetry)
 start "title" /b /wait wusa.exe /kb:3068708 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3075249 (telemetry for Win7/8.1)
+echo Delete KB3075249 (Telemetry Update that adds telemetry points to consent.exe in Win8.1 and Windows 7)
 start "title" /b /wait wusa.exe /kb:3075249 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3075851 (update for Windows Update on Win7/Server 2008R2)
+echo Delete KB3075851 (Update for Windows Update on Windows 7/Server 2008R2)
 start "title" /b /wait wusa.exe /kb:3075851 /uninstall /quiet /norestart
 echo  - next
-echo Delete KB3075853 (update for Windows Update on Win8.1/Server 2012R2)
+echo Delete KB3075853 (Update for Windows Update on Win8.1/Server 2012R2)
 start "title" /b /wait wusa.exe /kb:3075853 /uninstall /quiet /norestart
 echo  - next
 echo Delete KB3080149 (Telemetry)
@@ -75,15 +82,18 @@ start "title" /b /wait wusa.exe /kb:3080149 /uninstall /quiet /norestart
 echo  - done.
 timeout 5
 
+REM --- -----------------------------------------------
 REM --- Hide updates
+REM --- -----------------------------------------------
 echo Hiding updates, may take a while be patient...
 
 start "title" /b /wait cscript.exe "%~dp0HideWindowsUpdates.vbs" 971033 2902907 2952664 2976978 29777598 2990214 3012973 3014460 3015249 3021917 3022345 3035583 3044374 3050265 3050267 3065987 3068708 3075249 3075851 3075853 3080149 
 echo  - done.
 
+REM --- -----------------------------------------------
 REM --- Block Hosts
-echo Blocking Hosts(Including OUTLOOK,HOTMAIL,LIVE.COM) add REM in front of any you use...
-
+REM --- -----------------------------------------------
+echo Blocking Hosts (Including OUTLOOK, HOTMAIL, LIVE.COM)
 echo block a-0001.a-msedge.net
 route -p add 204.79.197.200/32 127.0.0.1
 
@@ -604,8 +614,11 @@ route -p add 204.79.197.203/32 127.0.0.1
 
 echo done
 
+REM --- -----------------------------------------------
 REM --- Disable tasks
+REM --- -----------------------------------------------
 echo Disabling tasks...
+echo Depending on OS you will get ERRORs if the services/tasks are not installed. That's Normal
 schtasks /Change /TN "\Microsoft\Windows\Application Experience\AitAgent" /DISABLE
 schtasks /Change /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /DISABLE
 schtasks /Change /TN "\Microsoft\Windows\Application Experience\ProgramDataUpdater" /DISABLE
@@ -636,7 +649,9 @@ schtasks /Change /TN "\Microsoft\Windows\Media Center\SqlLiteRecoveryTask" /DISA
 schtasks /Change /TN "\Microsoft\Windows\Media Center\UpdateRecordPath" /DISABLE
 echo - done
 
+REM --- -----------------------------------------------
 REM --- Kill services
+REM --- -----------------------------------------------
 echo Killing Diagtrack-service (if it still exists)...
 sc stop Diagtrack
 sc delete Diagtrack

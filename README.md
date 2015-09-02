@@ -4,20 +4,20 @@ Stop Windows 7 through 10 Nagging and Spying updates, Tasks, IPs, and services. 
 FILES
 -----
 
-BlockWindows.bat Right Click and "Run as Admin"
+`BlockWindows.bat` Right Click and "Run as Admin" (If you want to keep certain updates/uervices, edit this file before running it)
 
-hosts.bat Works with Windows 7 and 8. Appends current hosts file. Run from your Downloads directory.
+`hosts.bat` Works with Windows 7 and 8. Appends current hosts file. Run from your Downloads directory.
 Doesn't work on Windows 10, copy hosts file to your router or firewall if using Windows 10
 
-hosts DNS file of MS hosts to block
+`hosts` DNS file of MS hosts to block
 
-hostlist MS Hosts file to blocking for router or firewall use
+`hostlist` MS Hosts file to blocking for router or firewall use
 
-hosts-dnsmasq Hosts file for dd-wrt and other routers 
+`hosts-dnsmasq` Hosts file for dd-wrt and other routers 
 
-HideWindowsUpdates.vbs Hides blocked updates, to reinstall click 'show hidden updates'
+`HideWindowsUpdates.vbs` Hides blocked updates, to reinstall click 'show hidden updates' in Windows Update
 
-DisableWiFiSense.reg Adds registry to disable WiFi Sense, which steals your wifi password without your consent.
+`DisableWiFiSense.reg` Adds registry to disable WiFi Sense, which steals your wifi password without your consent.
 
 JavaScript HashCalc
 
